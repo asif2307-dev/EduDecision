@@ -31,7 +31,7 @@ export const Sidebar = () => {
     {
       title: "Core Administration",
       items: [
-        { name: "Dashboard", to: "/", icon: LayoutDashboard, roles: ['ADMIN', 'HOD', 'FACULTY'] },
+        { name: "Dashboard", to: "/dashboard", icon: LayoutDashboard, roles: ['ADMIN', 'HOD', 'FACULTY'] },
         { name: "Students", to: "/students", icon: Users, roles: ['ADMIN', 'HOD', 'FACULTY'] },
         { name: "Faculty", to: "/faculty", icon: GraduationCap, roles: ['ADMIN', 'HOD'] },
         { name: "Departments", to: "/departments", icon: Building2, roles: ['ADMIN', 'HOD'] },
@@ -105,7 +105,7 @@ export const Sidebar = () => {
                     <NavLink
                       key={item.to}
                       to={item.to}
-                      end={item.to === "/"}
+                      end={item.to === "/dashboard"}
                       className={({ isActive }) =>
                         `flex items-center justify-between px-2.5 py-1.5 rounded text-xs font-medium transition-colors ${
                           isActive

@@ -4,6 +4,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext';
 import { SettingsProvider } from './context/SettingsContext';
 
+import EntryPage from './pages/EntryPage';
 import AppLayout from './components/layout/AppLayout';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
@@ -52,34 +53,36 @@ export function App() {
         <SettingsProvider>
           <NotificationProvider>
             <Routes>
+              {/* Public Institutional Portal Entry Page */}
+              <Route path="/" element={<EntryPage />} />
+
               {/* Public Authentication Route */}
               <Route path="/login" element={<LoginPage />} />
 
               {/* Protected Institutional Routes */}
               <Route
-                path="/"
                 element={
                   <ProtectedRoute>
                     <AppLayout />
                   </ProtectedRoute>
                 }
               >
-                <Route index element={<DashboardPage />} />
-                <Route path="students" element={<StudentsPage />} />
-                <Route path="students/:id" element={<StudentProfilePage />} />
-                <Route path="faculty" element={<FacultyPage />} />
-                <Route path="departments" element={<DepartmentsPage />} />
-                <Route path="subjects" element={<SubjectsPage />} />
-                <Route path="attendance" element={<AttendancePage />} />
-                <Route path="marks" element={<MarksExamsPage />} />
-                <Route path="analytics" element={<AnalyticsPage />} />
-                <Route path="performance" element={<PerformancePage />} />
-                <Route path="at-risk" element={<AtRiskStudentsPage />} />
-                <Route path="decision-support" element={<DecisionSupportPage />} />
-                <Route path="import" element={<DataImportPage />} />
-                <Route path="data-quality" element={<DataQualityPage />} />
-                <Route path="reports" element={<ReportsPage />} />
-                <Route path="settings" element={<SettingsPage />} />
+                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/students" element={<StudentsPage />} />
+                <Route path="/students/:id" element={<StudentProfilePage />} />
+                <Route path="/faculty" element={<FacultyPage />} />
+                <Route path="/departments" element={<DepartmentsPage />} />
+                <Route path="/subjects" element={<SubjectsPage />} />
+                <Route path="/attendance" element={<AttendancePage />} />
+                <Route path="/marks" element={<MarksExamsPage />} />
+                <Route path="/analytics" element={<AnalyticsPage />} />
+                <Route path="/performance" element={<PerformancePage />} />
+                <Route path="/at-risk" element={<AtRiskStudentsPage />} />
+                <Route path="/decision-support" element={<DecisionSupportPage />} />
+                <Route path="/import" element={<DataImportPage />} />
+                <Route path="/data-quality" element={<DataQualityPage />} />
+                <Route path="/reports" element={<ReportsPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
               </Route>
 
               {/* Catch-all fallback */}

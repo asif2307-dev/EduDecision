@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Shield, Lock, Mail, AlertCircle, Check, HelpCircle } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Shield, Lock, Mail, AlertCircle, Check, HelpCircle, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
 import Modal from '../components/common/Modal';
@@ -27,7 +27,7 @@ export const LoginPage = () => {
     try {
       await login(email, password);
       success('Authentication successful. Redirecting to institutional dashboard...');
-      navigate('/');
+      navigate('/dashboard');
     } catch (err) {
       setFormError(err.message || 'Login failed. Please check institutional credentials.');
       error('Authentication failed');
@@ -51,24 +51,33 @@ export const LoginPage = () => {
     <div className="min-h-screen bg-[#eaeff5] flex flex-col justify-between py-8 px-4 sm:px-6 lg:px-8 font-sans">
       {/* Institutional Top Ribbon */}
       <div className="w-full max-w-4xl mx-auto flex items-center justify-between border-b border-neutral-300 pb-3 mb-6">
-        <div className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3 group">
           <img
             src="/logo.png"
             alt="EduDecision"
-            className="w-10 h-10 object-contain bg-white rounded border border-neutral-300 p-0.5 shadow-sm"
+            className="w-10 h-10 object-contain bg-white rounded border border-neutral-300 p-0.5 shadow-sm group-hover:border-navy-400 transition-colors"
           />
           <div>
-            <h1 className="text-lg font-bold text-navy-950 tracking-tight leading-tight">
+            <h1 className="text-lg font-bold text-navy-950 tracking-tight leading-tight group-hover:text-navy-700 transition-colors">
               EduDecision
             </h1>
             <p className="text-xs text-neutral-600 font-medium">
               Data-Driven Decision Support for Educational Institutions
             </p>
           </div>
-        </div>
-        <div className="hidden sm:block text-right text-xs text-neutral-500">
-          <div>Institutional Portal: NIST Academic System</div>
-          <div className="font-mono text-[11px] text-teal-800">ISO 9001:2015 Compliant</div>
+        </Link>
+        <div className="flex items-center gap-4 text-xs">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] bg-white border border-neutral-300 text-navy-900 font-semibold hover:bg-neutral-50 hover:border-neutral-400 transition-colors shadow-2xs"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 text-navy-700" />
+            <span>Return to Portal Home</span>
+          </Link>
+          <div className="hidden sm:block text-right text-neutral-500">
+            <div>Institutional Portal</div>
+            <div className="font-mono text-[11px] text-teal-800 font-semibold">ISO 9001:2015 Compliant</div>
+          </div>
         </div>
       </div>
 

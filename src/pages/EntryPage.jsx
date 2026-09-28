@@ -4,11 +4,9 @@ import {
   Shield,
   LogIn,
   BarChart3,
-  Users,
   CalendarCheck,
   FileSpreadsheet,
   AlertTriangle,
-  GraduationCap,
   Building2,
   FileText,
   CheckCircle,
@@ -22,8 +20,7 @@ import {
   MapPin,
   Clock,
   Menu,
-  X,
-  ExternalLink
+  X
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
